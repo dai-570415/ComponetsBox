@@ -1,0 +1,130 @@
+/* font-family: 'Noto Serif JP', serif; */
+@import url('https://fonts.googleapis.com/css?family=Noto+Serif+JP&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+}
+
+/* js */
+.fadein {
+    opacity : 0;
+    transform: translateY(20px);
+    transition: all 1s;
+}
+#page-top a {
+    display: block;
+    width: 50px;
+    height: 50px;
+    font-size: 15px;
+    color: #000;
+    text-align: center;
+    text-decoration: none;
+    padding: 12px 0 0 0;
+    border: 1px solid #000;
+    border-radius: 50%;
+    background: #fff;
+    transition: .5s;
+    right: 50px;
+    bottom: 50px;
+    position: fixed;
+}
+#page-top a:hover {
+    opacity: .5;
+}
+#stalker {
+    pointer-events: none;
+    position: fixed;
+    top: -8px;
+    left: -8px;
+    width: 30px;
+    height: 30px;
+    background: rgba(0,0,0,.1);
+    border-radius: 50%;
+    transform: translate(0,0);
+    transition: transform 0.2s;
+    transition-timing-function: ease-out;
+    z-index: 999;
+}
+.main .scroll-down {
+    font-size: 12px;
+    font-weight: 100;
+    letter-spacing: 0;
+    color: #79726e;
+    bottom: 50px;
+    right: 0;
+    position: absolute;
+    transform:rotate(90deg);
+}
+.main .scroll-down::after {
+    content: '';
+    display: inline-block;
+    background: #79726e;
+    height: 1px;
+    width: 50px;
+    margin:0 0 2px 0;
+}
+                    
+/* js */
+
+body {
+    width: 100%;
+}
+.main {
+    width: 100%;
+}
+.contents {
+    width: 100%;
+}
+
+/* @slide */
+#slideGalley {
+    width: 350px;
+    overflow: hidden;
+    margin: 50px auto;
+    position: relative;
+}
+#slide {
+    display: flex;
+    width: 100%;
+}
+#slide li a img {
+    width: 350px;
+    height: 250px;
+    object-fit: cover;
+    vertical-align: bottom;
+}
+#slide li {
+    /* margin: 0 10px; */
+    background: rgb(241, 240, 235);
+}
+#slide li .slide-text {
+    padding: 20px;
+}
+#slide li .slide-text .slide-text-title {
+    font-size: 17px;
+    font-family: 'Noto Serif JP', serif;
+    margin: 0 0 5px 0;
+}
+#slide li .slide-text .slide-text-content {
+    font-size: 13px;
+    font-weight: 100;
+}
+#nav {
+    display: block;
+}
+#nav .prev {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    margin: -50px 0 0 0;
+}
+#nav .next {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    margin: -50px 0 0 0;
+}
+/* @end slide */

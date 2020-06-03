@@ -1,0 +1,113 @@
+<input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+<label for="openSidebarMenu" class="sidebarIconToggle">
+    <div class="spinner diagonal part-1"></div>
+    <div class="spinner horizontal"></div>
+    <div class="spinner diagonal part-2"></div>
+</label>
+<div id="sidebarMenu">
+    <ul class="sidebarMenuInner">
+        <a href=""><li>項目A</li></a>
+        <a href=""><li>項目B</li></a>
+        <a href=""><li>項目C</li></a>
+    </ul>
+</div>
+
+<style>
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+#sidebarMenu {
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    transform: translateX(-250px);
+    transition: transform 250ms ease-in-out;
+    background: #808080;
+    z-index: 2;
+}
+#sidebarMenu ul {
+    margin: 50px 0 0 0;
+}
+.sidebarMenuInner li {
+	padding: 10px;
+	border-bottom: 1px dotted #bababa;
+    list-style: none;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: .5s;
+}
+.sidebarMenuInner li:hover {
+	color: #fff;
+	background: #ef5ba1;
+}
+.sidebarMenuInner a {
+    color: #eee;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: normal;
+    cursor: pointer;
+    text-decoration: none;
+}
+input[type="checkbox"]:checked ~ #sidebarMenu {
+    transform: translateX(0);
+}
+
+input[type=checkbox] {
+    transition: all 0.3s;
+    display: none;
+}
+.sidebarIconToggle {
+    transition: all 0.3s;
+    cursor: pointer;
+    position: absolute;
+    z-index: 3;
+    height: 100%;
+    width: 100%;
+    top: 22px;
+    left: 15px;
+    height: 22px;
+    width: 22px;
+}
+.spinner {
+    transition: all 0.3s;
+    position: absolute;
+    height: 1px;
+    width: 100%;
+    background-color: #000;
+}
+.horizontal {
+    transition: all 0.3s;
+    position: relative;
+    float: left;
+    margin-top: 3px;
+}
+.diagonal.part-1 {
+    position: relative;
+    transition: all 0.3s;
+    float: left;
+}
+.diagonal.part-2 {
+    transition: all 0.3s;
+    position: relative;
+    float: left;
+    margin-top: 3px;
+}
+input[type=checkbox]:checked ~ .sidebarIconToggle > .horizontal {
+    transition: all 0.3s;
+    opacity: 0;
+}
+input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-1 {
+    transition: all 0.3s;
+    transform: rotate(135deg);
+    margin-top: 8px;
+}
+input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
+    transition: all 0.3s;
+    transform: rotate(-135deg);
+    margin-top: -5px;
+}
+</style>

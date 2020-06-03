@@ -1,0 +1,100 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* js */
+.fadein {
+    opacity : 0;
+    transform: translateY(20px);
+    transition: all 1s;
+}
+#page-top a {
+    display: block;
+    width: 50px;
+    height: 50px;
+    font-size: 15px;
+    color: #000;
+    text-align: center;
+    text-decoration: none;
+    padding: 12px 0 0 0;
+    border: 1px solid #000;
+    border-radius: 50%;
+    background: #fff;
+    transition: .5s;
+    right: 50px;
+    bottom: 50px;
+    position: fixed;
+}
+#page-top a:hover {
+    opacity: .5;
+}
+#stalker {
+    pointer-events: none;
+    position: fixed;
+    top: -8px;
+    left: -8px;
+    width: 30px;
+    height: 30px;
+    background: rgba(0,0,0,.1);
+    border-radius: 50%;
+    transform: translate(0,0);
+    transition: transform 0.2s;
+    transition-timing-function: ease-out;
+    z-index: 999;
+}
+.main .scroll-down {
+    font-size: 12px;
+    font-weight: 100;
+    letter-spacing: 0;
+    color: #79726e;
+    bottom: 50px;
+    right: 0;
+    position: absolute;
+    transform:rotate(90deg);
+}
+.main .scroll-down::after {
+    content: '';
+    display: inline-block;
+    background: #79726e;
+    height: 1px;
+    width: 50px;
+    margin:0 0 2px 0;
+}
+/* js */
+
+body {
+    width: 100%;
+}
+.main {
+    width: 100%;
+}
+.contents {
+    width: 70%;
+    margin: 0 auto;
+}
+
+/* @and more */
+.loadArea {
+    margin: 0 auto;
+    width: 100%;
+    text-align: left;
+}
+.loadArea img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    opacity: 0;
+    vertical-align: bottom;
+}
+.moreBtn {
+    display: block;
+    margin: 20px auto;
+    padding: 15px 0;
+    color: #000;
+    font-weight: 100;
+    text-align: center;
+    transition: all 0.2s linear;
+}
+/* @end and more */

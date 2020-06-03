@@ -1,0 +1,132 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* js */
+.fadein {
+    opacity : 0;
+    transform: translateY(20px);
+    transition: all 1s;
+}
+#page-top a {
+    display: block;
+    width: 50px;
+    height: 50px;
+    font-size: 15px;
+    color: #000;
+    text-align: center;
+    text-decoration: none;
+    padding: 12px 0 0 0;
+    border: 1px solid #000;
+    border-radius: 50%;
+    background: #fff;
+    transition: .5s;
+    right: 50px;
+    bottom: 50px;
+    position: fixed;
+}
+#page-top a:hover {
+    opacity: .5;
+}
+#stalker {
+    pointer-events: none;
+    position: fixed;
+    top: -8px;
+    left: -8px;
+    width: 5px;
+    height: 5px;
+    background: rgba(0,0,0,.1);
+    border-radius: 50%;
+    transform: translate(0,0);
+    transition: transform 0.2s;
+    transition-timing-function: ease-out;
+    z-index: 999;
+}
+.main .scroll-down {
+    font-size: 12px;
+    font-weight: 100;
+    letter-spacing: 0;
+    color: #79726e;
+    bottom: 50px;
+    right: 0;
+    position: absolute;
+    transform:rotate(90deg);
+}
+.main .scroll-down::after {
+    content: '';
+    display: inline-block;
+    background: #79726e;
+    height: 1px;
+    width: 50px;
+    margin:0 0 2px 0;
+}
+/* js */
+
+body {
+    width: 100%;
+}
+.contents {
+    width: 100%;
+    padding: 20px;
+}
+
+/* @cssのみでドロワーメニュー（矢印向きアニメーション付き） */
+.hidden-box {
+    margin: 0 0 15px 0;
+}
+.hidden-box label {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    color: #1b52a3;
+    width: 100%;
+    height: 45px;
+    padding: 12px 0 0 15px;
+    border: 1px solid #b5b5b5;
+    border-radius: 5px;
+    background: linear-gradient(#fff, #e5e5e5);
+    cursor : pointer;
+    transition: .5s;
+}
+.hidden-box label span {
+    font-weight: 400;
+}
+.hidden-box input:checked ~ label {
+    color: #fff;
+    background: linear-gradient(#236bd8, #1b52a3);
+}
+.hidden-box label:before {
+    display: inline-block;
+    content: '\f107';
+    font-family: 'Font Awesome 5 Free';
+    margin: 0 15px 0 0;
+    transition: 0.2s;
+}
+.hidden-box input:checked ~ label:before {
+    content: '\f107';
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+.hidden-box input {
+    display: none;
+}
+.hidden-box .hidden-show {
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: 0.5s;
+}
+.hidden-box .hidden-show p {
+    font-size: 14px;
+    line-height: 22px;
+    text-align: justify;
+    margin: 5px 0 0 0;
+}
+.hidden-box input:checked ~ .hidden-show {
+    height: auto;
+    opacity: 1;
+}
+/* @end cssのみでドロワーメニュー（矢印向きアニメーション付き） */

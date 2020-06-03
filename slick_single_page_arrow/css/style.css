@@ -1,0 +1,95 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* js */
+.fadein {
+    opacity : 0;
+    transform: translateY(20px);
+    transition: all 1s;
+}
+#page-top a {
+    display: block;
+    width: 50px;
+    height: 50px;
+    font-size: 15px;
+    color: #000;
+    text-align: center;
+    text-decoration: none;
+    padding: 12px 0 0 0;
+    border: 1px solid #000;
+    border-radius: 50%;
+    background: #fff;
+    transition: .5s;
+    right: 50px;
+    bottom: 50px;
+    position: fixed;
+}
+#page-top a:hover {
+    opacity: .5;
+}
+#stalker {
+    pointer-events: none;
+    position: fixed;
+    top: -8px;
+    left: -8px;
+    width: 30px;
+    height: 30px;
+    background: rgba(0,0,0,.1);
+    border-radius: 50%;
+    transform: translate(0,0);
+    transition: transform 0.2s;
+    transition-timing-function: ease-out;
+    z-index: 999;
+}
+.main .scroll-down {
+    font-size: 12px;
+    font-weight: 100;
+    letter-spacing: 0;
+    color: #79726e;
+    bottom: 50px;
+    right: 0;
+    position: absolute;
+    transform:rotate(90deg);
+}
+.main .scroll-down::after {
+    content: '';
+    display: inline-block;
+    background: #79726e;
+    height: 1px;
+    width: 50px;
+    margin:0 0 2px 0;
+}
+.slick { 
+    max-width: 50%;
+}
+.slick-prev, .slick-next {
+    width:60px; /* 画像幅 */
+    height:34px /* 画像高さ */
+}
+.slick-prev:before, .slick-next:before {
+    content:"";
+}
+button.slick-prev, button.slick-next {
+    z-index:2;
+}
+.slick-prev{left:20px; /* 任意の値 */}
+.slick-next{left:100px; /* 任意の値 */}
+
+.slick-arrow{z-index:10;/* 値は適当に */}
+.slick img{
+    width: 100%;
+}
+/* js */
+
+body {
+    width: 100%;
+}
+.main {
+    width: 100%;
+}
+.contents {
+    width: 100%;
+}

@@ -1,0 +1,130 @@
+<!DOCTYPE HTML>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slick</title>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script src="./js/jquery.min.js"></script>
+<script src="./js/slick.js" type="text/javascript"></script>
+<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+<link rel="stylesheet" href="./css/slick-theme.css" type="text/css">
+<link rel="stylesheet" href="./css/slick.css" type="text/css">
+<link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    
+    <div class="container">
+        <div class="main">
+
+            <div class="center">
+                <div>
+                    <img src="./img/ph1.jpg" alt="photo1">
+                    <div class="product-name">Photo</div>
+                    <p>
+                        Sample Text.Sample Text.Sample Text.
+                        Sample Text.Sample Text.Sample Text.Sample Text.
+                        Sample Text.Sample Text.Sample Text.
+                    </p>
+                    <div class="cart-icon">
+                        <a href=""><i class="fas fa-shopping-cart"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <img src="./img/ph2.jpg" alt="photo2">
+                    <div class="product-name">Photo</div>
+                    <p>
+                        Sample Text.Sample Text.Sample Text.
+                        Sample Text.Sample Text.Sample Text.Sample Text.
+                        Sample Text.Sample Text.Sample Text.
+                    </p>
+                    <div class="cart-icon">
+                        <a href=""><i class="fas fa-shopping-cart"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <img src="./img/ph3.jpg" alt="photo3">
+                    <div class="product-name">Photo</div>
+                    <p>
+                        Sample Text.Sample Text.Sample Text.
+                        Sample Text.Sample Text.Sample Text.Sample Text.
+                        Sample Text.Sample Text.Sample Text.
+                    </p>
+                    <div class="cart-icon">
+                        <a href=""><i class="fas fa-shopping-cart"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="scroll-down">
+                Scroll Down
+            </div>
+        </div>
+        <div class="contents">
+            コンテンツ
+        </div>
+    </div>
+
+    <!-- 以下JS -->
+    <p id="page-top"><a href="">↑</a></p>
+    <div id="stalker"></div>
+    <script>
+        const stalker = document.getElementById('stalker'); 
+        document.addEventListener('mousemove', function (e) {
+            stalker.style.transform = 'translate(' + e.clientX + 'px, ' + e.clientY + 'px)';
+        });
+
+        $(function(){
+            // fadein
+            $(window).scroll(function (){
+                $('.fadein').each(function(){
+                    let targetElement = $(this).offset().top;
+                    let scroll = $(window).scrollTop();
+                    let windowHeight = $(window).height();
+                    if (scroll > targetElement - windowHeight + 200){
+                        $(this).css('opacity','1');
+                        $(this).css('transform','translateY(0)');
+                    }
+                });
+            });
+
+            // ページTOPに戻る
+            let topBtn = $('#page-top');    
+            topBtn.hide();
+
+            // スクロールダウン文言
+            let scrollDown = $('.scroll-down');
+            scrollDown.show();
+            
+            //スクロールが100に達したらボタン表示
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 100) {
+                    topBtn.fadeIn();
+                    scrollDown.fadeOut();
+                } else {
+                    topBtn.fadeOut();
+                    scrollDown.fadeIn();
+                }
+            });
+
+            //スクロールしてトップ
+            topBtn.click(function () {
+                $('body,html').animate({
+                    scrollTop: 0
+                }, 500);
+                return false;
+            });
+
+            // slick
+            $('.center').slick({
+                infinite: true, //スライドのループ有効化
+                dots:true, //ドットのナビゲーションを表示
+                centerMode: true, //要素を中央寄せ
+                centerPadding:'20%', //両サイドの見えている部分のサイズ
+                autoplay:true, //自動再生
+            });
+        });
+    </script>
+</body>
+</html>

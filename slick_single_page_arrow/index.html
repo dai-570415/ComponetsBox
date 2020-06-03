@@ -1,0 +1,119 @@
+<!DOCTYPE HTML>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Page</title>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script src="./js/jquery.min.js"></script>
+<script src="./js/slick.js" type="text/javascript"></script>
+<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+<link rel="stylesheet" href="./css/all.css">
+<link rel="stylesheet" href="./css/slick-theme.css" type="text/css">
+<link rel="stylesheet" href="./css/slick.css" type="text/css">
+<link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    
+    <div class="container">
+        <div class="main">
+            <div class="thumbnail-thumb">
+                <div class="thumbnail-thumb-wrap">1</div>
+                <div class="thumbnail-thumb-wrap">2</div>
+            </div>
+
+            <div class="arrows">
+                <div class="slick-counter"><span class="current"></span> of <span class="total"></span></div>
+                <label class="slick-next">
+                    <img src="./img/next-arrow.svg" alt="次へ">
+                </label>
+                <label class="slick-prev">
+                    <img src="./img/prev-arrow.svg" alt="戻る">
+                </label>
+            </div>
+
+            <div class="slick">
+                <div><img src="./img/main1.jpg" alt=""></div>
+                <div><img src="./img/main2.jpg" alt=""></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 以下JS -->
+    <p id="page-top"><a href="">↑</a></p>
+    <div id="stalker"></div>
+    <script>
+        const stalker = document.getElementById('stalker'); 
+        document.addEventListener('mousemove', function (e) {
+            stalker.style.transform = 'translate(' + e.clientX + 'px, ' + e.clientY + 'px)';
+        });
+
+        $(function(){
+            // fadein
+            $(window).scroll(function (){
+                $('.fadein').each(function(){
+                    let targetElement = $(this).offset().top;
+                    let scroll = $(window).scrollTop();
+                    let windowHeight = $(window).height();
+                    if (scroll > targetElement - windowHeight + 200){
+                        $(this).css('opacity','1');
+                        $(this).css('transform','translateY(0)');
+                    }
+                });
+            });
+
+            // ページTOPに戻る
+            let topBtn = $('#page-top');    
+            topBtn.hide();
+
+            // スクロールダウン文言
+            let scrollDown = $('.scroll-down');
+            scrollDown.show();
+            
+            //スクロールが100に達したらボタン表示
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 100) {
+                    topBtn.fadeIn();
+                    scrollDown.fadeOut();
+                } else {
+                    topBtn.fadeOut();
+                    scrollDown.fadeIn();
+                }
+            });
+
+            //スクロールしてトップ
+            topBtn.click(function () {
+                $('body,html').animate({
+                    scrollTop: 0
+                }, 500);
+                return false;
+            });
+
+            // slickスライダー
+            $(function(){
+                $('.slick').on('init', function(event, slick) {
+                    $('.current').text(slick.currentSlide + 1);
+                    $('.total').text(slick.slideCount);
+                })
+                .slick({
+                    autoplaySpeed: 5000,
+                    autoplay: true,
+                    arrows: true,
+                    appendArrows: $('.arrows'),
+                })
+                .on('beforeChange', function(event, slick, currentSlide, nextSlide) {
+                    $('.current').text(nextSlide + 1);
+                });
+                $('.thumbnail-thumb').slick({
+                    infinite: true, //スライドのループ有効化
+                    slidesToShow: 5, //表示するスライドの数
+                    focusOnSelect: true, //フォーカスの有効化
+                    asNavFor: '.slick', //slickクラスのナビゲーション
+                    vertical: false, // 縦方向にスライド表示
+                });
+            });
+        });
+    </script>
+</body>
+</html>

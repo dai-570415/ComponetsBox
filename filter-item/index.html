@@ -1,0 +1,129 @@
+<!DOCTYPE HTML>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Page</title>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script src="./js/jquery.min.js"></script>
+<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+<link rel="stylesheet" href="./css/all.css">
+<link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    
+    <div class="container">
+        <div class="main">
+        </div>
+        <div class="contents">
+            <div class="filter-button">
+                <a href="javascript:void(0)" class="allItem">ALL</a>
+                <a href="javascript:void(0)" class="food">FOOD</a>
+                <a href="javascript:void(0)" class="view">VIEW</a>
+                <a href="javascript:void(0)" class="fluits">FLUITS</a>
+            </div>
+            <div class="filter-list">
+                <ul>
+                    <li class="food"><img src="./img/food1.jpg" alt=""><p>food1</p></li>
+                    <li class="food"><img src="./img/food2.jpg" alt=""><p>food2</p></li>
+                    <li class="view"><img src="./img/view1.jpg" alt=""><p>view1</p></li>
+                    <li class="view"><img src="./img/view2.jpg" alt=""><p>view2</p></li>
+                    <li class="fluits"><img src="./img/fluits1.jpg" alt=""><p>fluits1</p></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 以下JS -->
+    <p id="page-top"><a href="">↑</a></p>
+    <div id="stalker"></div>
+    <script>
+        const stalker = document.getElementById('stalker'); 
+        document.addEventListener('mousemove', function (e) {
+            stalker.style.transform = 'translate(' + e.clientX + 'px, ' + e.clientY + 'px)';
+        });
+
+        $(function(){
+            // filter
+            let setFilter = $('.filter-button'),
+                filterBtn = setFilter.find('a'),
+                btnAll = $('.allItem'),
+                setList = $('.filter-list'),
+                filterList = setList.find('li'),
+                listWidth = filterList.outerWidth();
+
+            filterBtn.on('click', function(){
+                if(!($(this).hasClass('active'))){
+                    let filterClass = $(this).attr('class');
+
+                    filterList.each(function(){
+                        if($(this).hasClass(filterClass)){
+                            $(this).css({ display: 'block' })
+                                .stop().animate({ width: listWidth }, 100);
+                            $(this).find('*').stop().animate({ opacity: '1' }, 100);
+                        } else {
+                            $(this).find('*').stop().animate({ opacity: '0' }, 100);
+                            $(this).stop().animate({ width: '0' }, 100, function(){
+                                $(this).css({ display: 'none' });
+                            });
+                        }
+                    });
+
+                    filterBtn.removeClass('active');
+                    $(this).addClass('active');
+                }
+            });
+
+            btnAll.on('click', function(){
+                filterList.each(function(){
+                    $(this).css({display: 'block'}).stop().animate({width: listWidth}, 100);
+                    $(this).find('*').stop().animate({opacity: '1'}, 100);
+                });
+            });
+
+            btnAll.on('click');
+
+            // fadein
+            $(window).scroll(function (){
+                $('.fadein').each(function(){
+                    let targetElement = $(this).offset().top;
+                    let scroll = $(window).scrollTop();
+                    let windowHeight = $(window).height();
+                    if (scroll > targetElement - windowHeight + 200){
+                        $(this).css('opacity','1');
+                        $(this).css('transform','translateY(0)');
+                    }
+                });
+            });
+
+            // ページTOPに戻る
+            let topBtn = $('#page-top');    
+            topBtn.hide();
+
+            // スクロールダウン文言
+            let scrollDown = $('.scroll-down');
+            scrollDown.show();
+            
+            //スクロールが100に達したらボタン表示
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 100) {
+                    topBtn.fadeIn();
+                    scrollDown.fadeOut();
+                } else {
+                    topBtn.fadeOut();
+                    scrollDown.fadeIn();
+                }
+            });
+
+            //スクロールしてトップ
+            topBtn.click(function () {
+                $('body,html').animate({
+                    scrollTop: 0
+                }, 500);
+                return false;
+            });
+        });
+    </script>
+</body>
+</html>

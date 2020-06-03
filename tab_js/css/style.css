@@ -1,0 +1,183 @@
+/* font-family: 'Nixie One', cursive; */
+@import url('https://fonts.googleapis.com/css?family=Nixie+One&display=swap');
+/* font-family: 'Raleway Dots', cursive; */
+@import url('https://fonts.googleapis.com/css?family=Raleway+Dots&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  color: #66615B;
+  box-sizing: border-box;
+}
+a {
+  color: #66615B;
+  text-decoration: none;
+}
+
+/* @js */
+.fadein {
+    opacity : 0;
+    transform: translateY(20px);
+    transition: all 1s;
+}
+#page-top a {
+    display: block;
+    width: 50px;
+    height: 50px;
+    font-size: 15px;
+    color: #000;
+    text-align: center;
+    text-decoration: none;
+    padding: 12px 0 0 0;
+    border: 1px solid #000;
+    border-radius: 50%;
+    background: #fff;
+    transition: .5s;
+    right: 50px;
+    bottom: 50px;
+    position: fixed;
+}
+#page-top a:hover {
+    opacity: .5;
+}
+#stalker {
+    pointer-events: none;
+    position: fixed;
+    top: -8px;
+    left: -8px;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #fbc658;
+    border-radius: 50%;
+    transform: translate(0,0);
+    transition: transform 0.2s;
+    transition-timing-function: ease-out;
+    z-index: 999;
+}
+.main .scroll-down {
+    font-size: 12px;
+    font-weight: 100;
+    letter-spacing: 0;
+    color: #79726e;
+    bottom: 50px;
+    right: 0;
+    position: absolute;
+    transform:rotate(90deg);
+}
+.main .scroll-down::after {
+    content: '';
+    display: inline-block;
+    background: #79726e;
+    height: 1px;
+    width: 50px;
+    margin:0 0 2px 0;
+}
+/* @endjs */
+
+body {
+  width: 100%;
+}
+.main {
+  width: 100%;
+  height: 100vh;
+  padding: 50px;
+}
+.contents {
+    width: 100%;
+    padding: 50px;
+}
+/* @tab */
+/* @tab-btn */
+.contents .tab-menu-set .tab-menu {
+  display: flex;
+  justify-content: center;
+}
+.contents .tab-menu-set .tab-menu .tab-btn {
+  display: block;
+  font-size: 15px;
+  font-family: 'Raleway Dots', cursive;
+  text-align: center;
+  margin: 10px;
+  transition: .5s;
+}
+.contents .tab-menu-set .tab-menu .tab-btn:hover {
+  color: #fbc658;
+  padding: 0 0 5px 0;
+  border-bottom: 1px solid #fbc658;
+}
+/* @tab-item */
+.contents .tab-menu-set .tab-contents {
+  width: 40%;
+  margin: 0 auto;
+}
+.contents .tab-menu-set .tab-contents .tab-item {
+  display: none;
+  width: 100%;
+}
+.contents .tab-menu-set .tab-contents .tab-item .detail-button {
+  width: 25px;
+  height: 25px;
+  transition: .5s;
+}
+.contents .tab-menu-set .tab-contents .tab-item .detail-button:hover {
+  opacity: .5;
+}
+.contents .tab-menu-set .tab-contents .is-active-item {
+  display: block;
+}
+.contents .tab-menu-set .tab-contents .tab-item .inner-tab-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 1px solid #eee;
+}
+.contents .tab-menu-set .tab-contents .tab-item .inner-tab-item:last-child {
+  border-bottom: none;
+}
+.contents .tab-menu-set .tab-contents .tab-item .inner-tab-item .user-set {
+  display: flex;
+  align-items: center;
+}
+.contents .tab-menu-set .tab-contents .tab-item .inner-tab-item .user-set img {
+  width: 65px;
+  height: 65px;
+  object-fit: cover;
+  margin: 0 20px 0 0;
+  border-radius: 50%;
+}
+.contents .tab-menu-set .tab-contents .tab-item .inner-tab-item .user-set .user-set-text .user-name {
+  font-size: 11px;
+  font-weight: bold;
+}
+.contents .tab-menu-set .tab-contents .tab-item .inner-tab-item .user-set .user-set-text .user-intro {
+  font-size: 10px;
+  font-weight: 100;
+  color: rgb(185, 185, 185);
+}
+.contents .tab-menu-set .tab-contents .tab-item .inner-tab-noitem {
+  text-align: center;
+  padding: 50px 0;
+}
+.contents .tab-menu-set .tab-contents .tab-item .inner-tab-noitem .atend-text {
+  font-size: 30px;
+  font-family: 'Raleway Dots', cursive;
+  font-weight: 100;
+  margin: 0 0 30px 0;
+}
+.contents .tab-menu-set .tab-contents .tab-item .inner-tab-noitem .find-button {
+  font-size: 11px;
+  font-weight: bold;
+  color: #fff;
+  width: 125px;
+  margin: 0 auto;
+  padding: 10px 20px;
+  border: 1px solid #fbc658;
+  border-radius: 30px;
+  background: #fbc658;
+  transition: .5s;
+}
+.contents .tab-menu-set .tab-contents .tab-item .inner-tab-noitem .find-button:hover {
+  color: #fbc658;
+  background: #fff;
+}
+/* @end tab */

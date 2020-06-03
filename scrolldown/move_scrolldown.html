@@ -1,0 +1,65 @@
+<div class="arrowWrap">
+  <div class="arrowInner">
+    <p>scroll down</p>
+    <div class="arrow"></div>
+  </div>
+</div>
+  
+<style>
+  /* アニメーション設定 */
+  .arrowWrap {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 200px;
+  }
+
+  .arrowInner p {
+    font-size: 12px;
+    text-align: end;
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+    top: 10px;
+    left: 2px;
+    position: relative;
+  }
+
+  .arrow {
+    width: 1px;
+    height: 100px;
+    margin: 50px auto 0;
+    background-color: #eee;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .arrow::before {
+    content: '';
+    width: 1px;
+    height: 100px;
+    margin: 50px auto 0;
+    background-color: #000;
+    position: absolute;
+    top: -150px;
+    left: 0;
+    -webkit-animation: arrow 2.5s ease 0s infinite normal;
+    animation: arrow 2.5s ease 0s infinite normal;
+  }
+
+  @keyframes arrow {
+    0% {
+      -webkit-transform: translate3d(-50%, 0, 0);
+      transform: translate3d(-50%, 0, 0);
+    }
+
+    60% {
+      -webkit-transform: translate3d(-50%, 100px, 0);
+      transform: translate3d(-50%, 100px, 0);
+    }
+
+    100% {
+      -webkit-transform: translate3d(-50%, 100px, 0);
+      transform: translate3d(-50%, 100px, 0);
+    }
+  }
+</style>

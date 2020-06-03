@@ -1,0 +1,109 @@
+<input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+
+<div class="right-sidebar">
+    <label for="openSidebarMenu" class="sidebarIconToggle">
+        <div class="spinner diagonal part-1"></div>
+        <div class="spinner horizontal"></div>
+        <div class="spinner diagonal part-2"></div>
+        <div class="toggle-label">メニュー</div>
+    </label>
+</div>
+<div class="sidebarMenu">
+    toggleメニュー
+</div>
+
+<style>
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/*サイドメニュー*/
+.sidebarMenu {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    transform: translateX(100%);
+    background: #fff;
+    z-index: 2;
+}
+.sidebarMenu ul {
+    margin: 50px 0 0 0;
+}
+input[type="checkbox"]:checked ~ .sidebarMenu {
+    transform: translateX(0);
+}
+input[type=checkbox] {
+    transition: all 0.3s;
+    display: none;
+}
+.sidebarIconToggle {
+    transition: all 0.3s;
+    cursor: pointer;
+    position: absolute;
+    z-index: 3;
+    height: 100%;
+    top: 45%;
+    right: 30px;
+    height: 22px;
+    width: 40px;
+}
+.right-sidebar {
+    width: 100px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    border-left: 1px solid #eee;
+    background: #fff;
+    position: fixed;
+    z-index: 3;
+}
+.toggle-label {
+    font-size: 10px;
+    margin: 25px 0 0 0;
+}
+.spinner {
+    transition: all 0.3s;
+    position: absolute;
+    height: 1px;
+    width: 100%;
+    background-color: #000;
+}
+.horizontal {
+    transition: all 0.3s;
+    position: relative;
+    float: left;
+    margin-top: 3px;
+}
+.diagonal.part-1 {
+    position: relative;
+    transition: all 0.3s;
+    float: left;
+}
+.diagonal.part-2 {
+    transition: all 0.3s;
+    position: relative;
+    float: left;
+    margin-top: 3px;
+}
+input[type=checkbox]:checked ~ .right-sidebar > .sidebarIconToggle > .horizontal {
+    transition: all 0.3s;
+    opacity: 0;
+}
+input[type=checkbox]:checked ~ .right-sidebar > .sidebarIconToggle > .diagonal.part-1 {
+    transition: all 0.3s;
+    transform: rotate(135deg);
+    margin-top: 8px;
+}
+input[type=checkbox]:checked ~ .right-sidebar > .sidebarIconToggle > .diagonal.part-2 {
+    transition: all 0.3s;
+    transform: rotate(-135deg);
+    margin-top: -5px;
+}
+/*サイドメニュー*/
+
+</style>

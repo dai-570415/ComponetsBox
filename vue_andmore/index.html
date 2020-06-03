@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios@0.17.1/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.5/lodash.min.js"></script>
+<title>Vue App</title>
+</head>
+<body>
+    <div id="app">
+        <div class="contents">
+            <div class="contents-item">
+                <div
+                    class="list-item"
+                    v-for="listItem in listItems"
+                    :key="listItem.id"
+                >
+                    <img v-if="listItem.imageSrc" :src="listItem.imageSrc" class="posts-image">
+                    <div class="text">
+                        <div class="created_at">{{ listItem.created_at }}</div>
+                        <div class="message">{{ listItem.message }}</div>
+                    </div>
+                    <div class="user">
+                        <img v-if="listItem.thumbnailSrc" :src="listItem.thumbnailSrc" class="user-image">
+                        <span>{{ listItem.userName }}</span>
+                    </div>
+                </div>
+            </div>
+            <button
+                class="list-item-button"
+                v-if="(listItems.length - count) >= 0"
+                type="button"
+                @click="isMore"
+            >
+                もっと見る
+            </button>
+        </div>
+    </div>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                list: [
+                    { id: 1, userName: 'Aさん', thumbnailSrc: './img/ph1.jpg', message: 'メッセージAです', imageSrc: './img/ph1.jpg', created_at: '2019-12-19' },
+                    { id: 2, userName: 'Bさん', thumbnailSrc: './img/ph2.jpg', message: 'メッセージBです', imageSrc: './img/ph2.jpg', created_at: '2019-12-19' },
+                    { id: 3, userName: 'Cさん', thumbnailSrc: './img/ph3.jpg', message: 'メッセージCです', imageSrc: './img/ph3.jpg', created_at: '2019-12-19' },
+                    { id: 4, userName: 'Dさん', thumbnailSrc: './img/ph4.jpg', message: 'メッセージDです', imageSrc: './img/ph4.jpg', created_at: '2019-12-19' },
+                    { id: 5, userName: 'Eさん', thumbnailSrc: './img/ph5.jpg', message: 'メッセージEです', imageSrc: './img/ph5.jpg', created_at: '2019-12-19' },
+                ],
+                count: 2,
+            },
+            computed: {
+                listItems() {
+                    const list = this.list
+                    return list.slice(0, this.count)
+                }
+            },
+            methods: {
+                isMore() {
+                    this.count += 2
+                }
+            },
+        });
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            color: #696969;
+            background: #313131;
+        }
+        .contents {
+            margin: 50px;
+        }
+        .contents .contents-item {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .contents .contents-item .list-item {
+            width: 300px;
+            margin: 20px 5px 10px;
+            background: #fff;
+            border-radius: 3px;
+            filter: drop-shadow(0 0 2px rgba(0,0,0,0.3));
+        }
+        .contents .contents-item .list-item .posts-image {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 3px 3px 0 0;
+            vertical-align: bottom;
+        }
+        .contents .contents-item .text {
+            padding: 15px;
+        }
+        .contents .contents-item .text .created_at {
+            font-size: 11px;
+            color: rgb(179, 179, 179);
+            margin: 0 0 5px 0;
+        }
+        .contents .contents-item .text .message {
+            font-size: 13px;
+            font-weight: bold;
+        }
+        .contents .contents-item .list-item .user {
+            padding: 15px;
+            border-top: 1px dashed #ccc;
+        }
+        .contents .contents-item .list-item .user .user-image {
+            width: 30px;
+            height: 30px;
+            object-fit: cover;
+            border-radius: 50%;
+            vertical-align: bottom;
+        }
+        .contents .contents-item .list-item .user span {
+            font-size: 11px;
+            font-weight: bold;
+            bottom: 5px;
+            left: 5px;
+            position: relative;
+        }
+        .contents .list-item-button {
+            display: block;
+            font-size: 14px;
+            color: #ccc;
+            margin: 50px auto;
+            border: 0;
+            background: none;
+            transition: .5s;
+        }
+        .contents .list-item-button:hover {
+            color: rgb(175, 0, 0);
+        }
+    </style>
+</body>
+</html>

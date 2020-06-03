@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slick Slider（左-固定写真,右-情報）</title>
+<script type="text/javascript" src="./js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="./js/slick.js"></script>
+<link type="text/css" rel="stylesheet" href="./css/slick.css" />
+<script type="text/javascript" src="./js/script.js"></script>
+<link type="text/css" rel="stylesheet" href="./css/style.css" />
+</head>
+
+<body>
+	<div class="main">
+        <div class="left-main">
+            <div id="slick-main" class="slick">
+                <div class="slideobject">
+                    <figure class="image" style="background-image: url(./img/img1.jpg);"></figure>
+                </div>
+                <div class="slideobject">
+                    <figure class="image" style="background-image: url(./img/img2.jpg);"></figure>
+                </div>
+            </div>
+        </div>
+
+        <div class="right-main">
+            <h1>右側メイン</h1>
+            <div class="scroll-down">
+                Scroll Down
+            </div>
+        </div> 
+    </div>
+    
+    <div class="contents">
+        コンテンツ内容
+    </div>
+
+	<!-- 以下JS -->
+    <p id="page-top"><a href="">↑</a></p>
+    <div id="stalker"></div>
+    <script>
+        const stalker = document.getElementById('stalker'); 
+        document.addEventListener('mousemove', function (e) {
+            stalker.style.transform = 'translate(' + e.clientX + 'px, ' + e.clientY + 'px)';
+        });
+
+        $(function(){
+            // fadein
+            $(window).scroll(function (){
+                $('.fadein').each(function(){
+                    let targetElement = $(this).offset().top;
+                    let scroll = $(window).scrollTop();
+                    let windowHeight = $(window).height();
+                    if (scroll > targetElement - windowHeight + 200){
+                        $(this).css('opacity','1');
+                        $(this).css('transform','translateY(0)');
+                    }
+                });
+            });
+
+            // ページTOPに戻る
+            let topBtn = $('#page-top');    
+            topBtn.hide();
+            let scrollDown = $('.scroll-down');
+            scrollDown.show();
+            //スクロールが100に達したらボタン表示
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 100) {
+                    topBtn.fadeIn();
+                    scrollDown.fadeOut();
+                } else {
+                    topBtn.fadeOut();
+                    scrollDown.fadeIn();
+                }
+            });
+            //スクロールしてトップ
+            topBtn.click(function () {
+                $('body,html').animate({
+                    scrollTop: 0
+                }, 500);
+                return false;
+            });
+        });
+    </script>
+</body>
+
+</html>

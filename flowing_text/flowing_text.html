@@ -1,0 +1,38 @@
+<div class="area">
+    <div class="flowing">
+        THIS IS FLOWING SERVICE.
+    </div>
+</div>
+
+<style type="text/css">
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box; 
+    }
+    /* 表示領域 */
+    .area {
+        width: 80%;
+        overflow: hidden;
+        margin: 0 auto;
+        background: #000;
+    }
+    /* 表示領域に合わせてサイズと余白を設定 */
+    .flowing {
+        font-size: 50px;
+        font-weight: bold;
+        letter-spacing: 50px;
+        color: #fff;
+        width: 100%;
+        padding-left: 100%;
+        white-space: nowrap;
+        animation-name: flowing;
+        animation-duration: 7s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+    }
+    @keyframes flowing {
+        from    { transform: translate(0%); } 
+        100%,to { transform: translate(-100%); }
+    }
+</style>

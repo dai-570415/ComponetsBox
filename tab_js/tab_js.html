@@ -1,0 +1,126 @@
+<!DOCTYPE HTML>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>[JQuery]TabMenu</title>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script src="./js/jquery.min.js"></script>
+<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+<link rel="stylesheet" href="./css/all.css">
+<link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+  <div class="container">
+    <!-- <div class="main">
+      ファーストビュー
+      <div class="scroll-down">
+        Scroll Down
+      </div>
+    </div> -->
+
+    <div class="contents">
+      <div class="tab-menu-set">
+        <div class="tab-menu">
+          <a class="tab-btn" href="#item1">Follower</a>
+          <a class="tab-btn" href="#item2">Follow</a>
+        </div>
+        <div class="tab-contents">
+          <div class="tab-item is-active-item" id="item1">
+            <div class="inner-tab-item">
+              <div class="user-set">
+                <img src="./img/user.jpg" alt="">
+                <div class="user-set-text">
+                  <a href=""><div class="user-name">User Name</div></a>
+                  <a href=""><div class="user-intro">User Intro</div></a>
+                </div>
+              </div>
+              <a href=""><div class="detail-button"><img src="./img/arrow.svg" alt=""></div></a>
+            </div>
+            <div class="inner-tab-item">
+              <div class="user-set">
+                <img src="./img/user.jpg" alt="">
+                <div class="user-set-text">
+                  <a href=""><div class="user-name">User Name</div></a>
+                  <a href=""><div class="user-intro">User Intro</div></a>
+                </div>
+              </div>
+              <a href=""><div class="detail-button"><img src="./img/arrow.svg" alt=""></div></a>
+            </div>
+          </div>
+          <div class="tab-item" id="item2">
+            <div class="inner-tab-noitem">
+              <div class="atend-text">Not following anyone yet</div>
+              <a href=""><div class="find-button">FIND USER</div></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+
+  <!-- 以下JS -->
+  <p id="page-top"><a href="">↑</a></p>
+  <div id="stalker"></div>
+
+  <script>
+    const stalker = document.getElementById('stalker'); 
+    document.addEventListener('mousemove', function (e) {
+        stalker.style.transform = 'translate(' + e.clientX + 'px, ' + e.clientY + 'px)';
+    });
+
+    $(function() {
+      // fadein
+      $(window).scroll(function (){
+          $('.fadein').each(function(){
+              let targetElement = $(this).offset().top;
+              let scroll = $(window).scrollTop();
+              let windowHeight = $(window).height();
+              if (scroll > targetElement - windowHeight + 200){
+                  $(this).css('opacity','1');
+                  $(this).css('transform','translateY(0)');
+              }
+          });
+      });
+
+      // ページTOPに戻る
+      let topBtn = $('#page-top');    
+      topBtn.hide();
+
+      // スクロールダウン文言
+      let scrollDown = $('.scroll-down');
+      scrollDown.show();
+      
+      //スクロールが100に達したらボタン表示
+      $(window).scroll(function () {
+          if ($(this).scrollTop() > 100) {
+              topBtn.fadeIn();
+              scrollDown.fadeOut();
+          } else {
+              topBtn.fadeOut();
+              scrollDown.fadeIn();
+          }
+      });
+
+      //スクロールしてトップ
+      topBtn.click(function () {
+          $('body,html').animate({
+              scrollTop: 0
+          }, 500);
+          return false;
+      });
+
+      // タブメニュー
+      $('.tab-btn').on('click', function() {
+        // 一旦tab_itemクラスからis-active-itemクラスを削除
+        $('.tab-item').removeClass('is-active-item');
+        // this(tab_btnクラス)のhrefをattr(属性取得)して、その該当するidのセレクタにis-active-itemクラスを付与
+        $($(this).attr('href')).addClass('is-active-item');
+      });
+    });
+  </script>
+</body>
+</html>
